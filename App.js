@@ -14,6 +14,8 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import LoginPage from './screens/LoginPage';
 import VerifyOtpScreen from './screens/VerifyOtpScreen';
 import HomeScreen from './screens/HomeScreen';
+import TestScreen from './screens/TestScreen';
+import DriverHomeScreen from './screens/DriverHomeScreen';
 
 const Stack = createStackNavigator();
 
@@ -34,32 +36,35 @@ function StackNavigator() {
           options={{headerShown: false}}
         />
       )} */}
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Login"
         component={LoginPage}
         options={{headerShown: false}}
-      /> 
-      <Stack.Screen
+      />  */}
+      {/* <Stack.Screen
         name="Verify"
         component={VerifyOtpScreen}
         options={{headerShown: false}}
-      />
-      <Stack.Screen
+      /> */}
+      {/* <Stack.Screen
         name="Home"
         component={HomeScreen}
+        options={{headerShown: false}}
+      /> */}
+      <Stack.Screen
+        name="Driver"
+        component={DriverHomeScreen}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
   );
 }
 const App = () => {
-
   return (
     <SafeAreaProvider>
-        <NavigationContainer>
-          <StackNavigator>
-          </StackNavigator>
-        </NavigationContainer>
+      <NavigationContainer>
+        <StackNavigator />
+      </NavigationContainer>
     </SafeAreaProvider>
   );
 };

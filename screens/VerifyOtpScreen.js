@@ -50,7 +50,7 @@ const VerifyOtpScreen = ({navigation, route}) => {
       loginSource: otpResponse.loginSource,
     };
     // console.log(verifyData);
-    handleVerifyOtp(verifyData)
+    handleVerifyOtp(verifyData);
   };
   const handleVerifyOtp = async verifyData => {
     setLoader(true);
@@ -58,7 +58,7 @@ const VerifyOtpScreen = ({navigation, route}) => {
       const response = await axios.post(APIS.verifyOtp, verifyData);
       const res_ponse = response.data;
       console.log('verified', res_ponse);
-      navigation.navigate('Home');
+      navigation.navigate('Driver');
     } catch (error) {
       if (error.response) {
         if (
@@ -69,13 +69,12 @@ const VerifyOtpScreen = ({navigation, route}) => {
         } else {
           setErrorMsg({
             ...errorMsg,
-            ResponseError: 'otp not valid',
+            ResponseError: error.response.data,
           });
-          console.log(error?.response);
+          console.log(error?.response.data);
         }
       } else {
         Alert.alert('Warning!', 'No internet connection');
-        // setShowModal(true)
       }
     } finally {
       setLoader(false);
@@ -139,6 +138,15 @@ const VerifyOtpScreen = ({navigation, route}) => {
                 setShowError({
                   ...showError,
                   otp: true,
+                });
+              } else {
+                setErrorMsg({
+                  ...errorMsg,
+                  otp: '',
+                });
+                setShowError({
+                  ...showError,
+                  otp: false,
                 });
               }
             }}

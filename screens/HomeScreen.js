@@ -7,7 +7,7 @@ import {
   View,
   Dimensions,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import YeboFinal from '../assets/images/yeboFinalLogo.svg';
 import Bell from '../assets/images/bell.svg';
 import BannerImage from '../assets/images/banner.svg';
@@ -15,17 +15,19 @@ import Profile from '../assets/images/profilePic.svg';
 import Stats from '../assets/images/statsPic.svg';
 import CardProfile from '../assets/images/womenSafety.svg';
 
-const HomeScreen = () => {
-  const [data, setData] = useState([1, 1, 1, 1, 1])
+const HomeScreen = ({navigation}) => {
+  const {height, width} = Dimensions.get('window');
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [data, setData] = useState([1, 1, 1, 1, 1]);
   const renderItem = (item, index) => {
     return (
       <View
         style={{
           backgroundColor: 'white',
           borderRadius: 8,
-          width: Dimensions.get('window').width - 60,
+          width: width - 50,
           height: 175,
-          marginHorizontal: 20,
+          marginHorizontal: 14,
           elevation: 10,
           alignItems: 'center',
           justifyContent: 'center',
@@ -66,6 +68,9 @@ const HomeScreen = () => {
         <YeboFinal width={80} height={80} />
         <TouchableOpacity
           activeOpacity={1}
+          onPress={() => {
+            navigation.navigate('Test');
+          }}
           style={{
             width: 60,
             height: 60,
@@ -148,6 +153,10 @@ const HomeScreen = () => {
             renderItem={renderItem}
             horizontal
             pagingEnabled
+            onScroll={e => {
+              const x = e.nativeEvent.contentOffset.x;
+              setCurrentIndex((x / width).toFixed(0));
+            }}
             style={{}}
             contentContainerStyle={{
               marginTop: 25,
@@ -158,6 +167,27 @@ const HomeScreen = () => {
             showsHorizontalScrollIndicator={false}
             scrollEventThrottle={1}
           />
+          <View
+            style={{
+              flexDirection: 'row',
+              width: width,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            {data.map((item, index) => {
+              return (
+                <View
+                  style={{
+                    width: currentIndex == index ? 10 : 8,
+                    height: currentIndex == index ? 10 : 8,
+                    borderRadius: currentIndex == index ? 5 : 4,
+                    backgroundColor: currentIndex == index ? 'gray' : 'lightgray',
+                    marginLeft: 5,
+                  }}
+                />
+              );
+            })}
+          </View>
         </View>
       </ScrollView>
     </View>
