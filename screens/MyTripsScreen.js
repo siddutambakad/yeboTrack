@@ -5,13 +5,17 @@ import Sos from '../assets/images/sos.svg';
 import Bell from '../assets/images/bell.svg';
 import MyTripNavigator from './Components/MyTripNavigator';
 
-const MyTripsScreen = () => {
+const MyTripsScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
       {/* header starts */}
       <View style={styles.header}>
         <View>
-          <TouchableOpacity style={styles.backbutton}>
+          <TouchableOpacity
+            style={styles.backbutton}
+            onPress={() => {
+              navigation.goBack();
+            }}>
             <Back width={30} height={30} />
             <Text style={styles.backbuttonText}>My Trips</Text>
           </TouchableOpacity>
