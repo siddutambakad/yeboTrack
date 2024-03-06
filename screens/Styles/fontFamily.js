@@ -1,6 +1,6 @@
 export default {
-  regular: 'SairaCondensed-Regular',
-  bold: 'SairaCondensed-Bold',
-  medium: 'SairaCondensed-Medium',
-  semiBold: 'SairaCondensed-SemiBold',
+  regular: 'Saira-Regular',
+  bold: 'Saira-Bold',
+  medium: 'Saira-Medium',
+  semiBold: 'Saira-SemiBold',
 };

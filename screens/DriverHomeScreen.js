@@ -13,7 +13,7 @@ import Car from '../assets/images/Car.svg';
 import History from '../assets/images/history.svg';
 import Bell from '../assets/images/bell.svg';
 
-const DriverHomeScreen = () => {
+const DriverHomeScreen = ({navigation}) => {
   return (
     // <ImageBackground
     //   style={styles.imageBackground}
@@ -133,6 +133,10 @@ const DriverHomeScreen = () => {
             <Text style={{color: 'black', fontSize: 16}}>My Profile</Text>
           </TouchableOpacity>
           <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={() => {
+              navigation.navigate('MyTrip');
+            }}
             style={{
               flexDirection: 'row',
               backgroundColor: 'white',
@@ -147,7 +151,7 @@ const DriverHomeScreen = () => {
               elevation: 10,
             }}>
             <Car width={40} height={40} />
-            <Text style={{color: 'black', fontSize: 16}}>My Stats</Text>
+            <Text style={{color: 'black', fontSize: 16}}>My Trips</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={{

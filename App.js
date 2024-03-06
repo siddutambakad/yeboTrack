@@ -16,6 +16,7 @@ import VerifyOtpScreen from './screens/VerifyOtpScreen';
 import HomeScreen from './screens/HomeScreen';
 import TestScreen from './screens/TestScreen';
 import DriverHomeScreen from './screens/DriverHomeScreen';
+import MyTripsScreen from './screens/MyTripsScreen';
 
 const Stack = createStackNavigator();
 
@@ -54,6 +55,11 @@ function StackNavigator() {
       <Stack.Screen
         name="Driver"
         component={DriverHomeScreen}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="MyTrip"
+        component={MyTripsScreen}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
